@@ -154,10 +154,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 aux=Operaciones.resultado(pantalla.getText().toString());
-
-                //convierte a string
-               // sub=op.valueOf(i);
-
                 pantalla.setText(aux);
             }
         });
@@ -180,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     void Ce(){
+        oper="";
         pantalla.setText("");
     }
 

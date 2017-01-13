@@ -6,35 +6,89 @@ import java.util.*;
 
 public class Operaciones {
 
-    static int suma(String[]cadena){
+    static int suma(String cadena){
         int aux, cont=0;
-        String sub="";
 
-        for (int i=0;i<cadena.length;i++){
+        String []suma=cadena.split("\\+");
 
-            aux=sub.indexOf(cadena[i]);
-            
-            cont=cont+aux;
-        }
+        try {
+            for (int i=0;i<suma.length;i++){
+                aux = Integer.parseInt(suma[i]);
+                cont = cont + aux;
+            }
+
+        }catch(NumberFormatException e){}
+
 
 
         return cont;
     }
-    //int resta(){}
-    //int division(){}
-    //int producto(){}
+    static int resta(String cadena){
+        int aux, cont=0;
+
+        String []resta=cadena.split("\\-");
+
+        try {
+            for (int i=0;i<resta.length;i++){
+                aux = Integer.parseInt(resta[i]);
+                cont = cont - aux;
+            }
+
+        }catch(NumberFormatException e){}
+
+
+
+        return cont;
+    }
+
+     static float division(String cadena){
+         float aux, cont=0;
+
+         String []division=cadena.split("/");
+
+         try {
+             for (int i=0;i<division.length;i++){
+                 aux = Float.parseFloat(division[i]);
+                 cont = cont / aux;
+             }
+
+         }catch(NumberFormatException e){}
+
+
+
+         return cont;
+     }
+
+    static int producto(String cadena){
+
+        int aux, cont=0;
+
+        String []producto=cadena.split("\\+");
+
+        try {
+            for (int i=0;i<producto.length;i++){
+                aux = Integer.parseInt(producto[i]);
+                cont = cont * aux;
+            }
+
+        }catch(NumberFormatException e){}
+
+
+
+        return cont;
+    }
 
     static String resultado(String oper){
 
         int num;
         String[] cadena;
-        String aux="";
-        cadena="+".split(oper);
+        String resul="";
 
-        num=suma(cadena);
 
-        aux=String.valueOf(num);
+        num=suma(oper);
 
-        return aux;
+        resul=String.valueOf(num);
+
+        return resul;
     }
 }
