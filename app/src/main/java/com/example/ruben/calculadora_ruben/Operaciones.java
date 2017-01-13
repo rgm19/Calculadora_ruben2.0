@@ -24,15 +24,16 @@ public class Operaciones {
         return cont;
     }
     static int resta(String cadena){
-        int aux, cont=0;
-
-        String []resta=cadena.split("\\-");
-
+        int res=0, cont=0;
         try {
-            for (int i=0;i<resta.length;i++){
-                aux = Integer.parseInt(resta[i]);
-                cont = cont - aux;
-            }
+
+            String []resta=cadena.split("-");
+
+
+            cont=Integer.parseInt(resta[0]);
+            res=Integer.parseInt(resta[1]);
+
+            cont=cont-res;
 
         }catch(NumberFormatException e){}
 
@@ -42,15 +43,16 @@ public class Operaciones {
     }
 
      static float division(String cadena){
-         float aux, cont=0;
-
-         String []division=cadena.split("/");
-
+         float divi=0, cont=0;
          try {
-             for (int i=0;i<division.length;i++){
-                 aux = Float.parseFloat(division[i]);
-                 cont = cont / aux;
-             }
+
+             String []resta=cadena.split("-");
+
+
+             cont=Float.parseFloat(resta[0]);
+             divi=Float.parseFloat(resta[1]);
+
+             cont=cont/divi;
 
          }catch(NumberFormatException e){}
 
@@ -63,7 +65,7 @@ public class Operaciones {
 
         int aux, cont=0;
 
-        String []producto=cadena.split("\\+");
+        String []producto=cadena.split("\\*");
 
         try {
             for (int i=0;i<producto.length;i++){
@@ -78,14 +80,31 @@ public class Operaciones {
         return cont;
     }
 
-    static String resultado(String oper){
-
-        int num;
-        String[] cadena;
+    static String resultado(String oper, int ele){
+        float divi=0;
+        int num=0;
         String resul="";
 
+        switch (ele){
 
-        num=suma(oper);
+            case 1:
+                num=suma(oper);
+                break;
+
+            case 2:
+                num=resta(oper);
+                break;
+
+            case 3:
+                num=producto(oper);
+                break;
+
+            case 4:
+                divi=division(oper);
+                break;
+
+        }
+
 
         resul=String.valueOf(num);
 

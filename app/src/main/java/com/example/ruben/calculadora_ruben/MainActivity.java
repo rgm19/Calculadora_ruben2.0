@@ -1,5 +1,4 @@
 package com.example.ruben.calculadora_ruben;
-//kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkt
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9, btn_0, btn_resta, btn_suma, btn_producto, btn_division, btn_operacion;
     Button btn_ce, btn_men;
     TextView pantalla;
+    static int ele;
     static String oper="", aux="";
 
     @Override
@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 oper+="+";
                 pantalla.setText(oper);
+                ele=1;
             }
         });
 
@@ -130,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 oper+="-";
                 pantalla.setText(oper);
+                ele=2;
             }
         });
 
@@ -138,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 oper+="x";
                 pantalla.setText(oper);
+                ele=3;
             }
         });
 
@@ -146,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 oper+="/";
                 pantalla.setText(oper);
+                ele=4;
             }
         });
 
@@ -153,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                aux=Operaciones.resultado(pantalla.getText().toString());
+                aux=Operaciones.resultado(pantalla.getText().toString(), ele);
                 pantalla.setText(aux);
             }
         });
