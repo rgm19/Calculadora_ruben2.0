@@ -1,88 +1,87 @@
 package com.example.ruben.calculadora_ruben;
-import java.util.*;
+
 /**
  * Created by ruben on 7/11/16.
  */
 
 public class Operaciones {
 
-    static int suma(String cadena){
-        int aux, cont=0;
+        private static float aux;
+        private static float cont;
+
+    static float suma(String cadena){
+
 
         String []suma=cadena.split("\\+");
 
         try {
-            for (int i=0;i<suma.length;i++){
-                aux = Integer.parseInt(suma[i]);
-                cont = cont + aux;
-            }
 
-        }catch(NumberFormatException e){}
+            cont=Float.parseFloat(suma[0]);
+            aux=Float.parseFloat(suma[1]);
+
+            cont=cont+aux;
+
+        }catch(Exception e){}
 
 
 
-        return cont;
+        return getCont();
     }
-    static int resta(String cadena){
-        int res=0, cont=0;
+    static float resta(String cadena){
+
         try {
 
             String []resta=cadena.split("-");
 
 
-            cont=Integer.parseInt(resta[0]);
-            res=Integer.parseInt(resta[1]);
+            cont=Float.parseFloat(resta[0]);
+            aux=Float.parseFloat(resta[1]);
 
-            cont=cont-res;
-
-        }catch(NumberFormatException e){}
-
+            cont= getCont() - getAux();
+        }catch(Exception e){}
 
 
-        return cont;
+
+        return getCont();
     }
 
      static float division(String cadena){
-         float divi=0, cont=0;
+
          try {
 
              String []resta=cadena.split("-");
 
 
              cont=Float.parseFloat(resta[0]);
-             divi=Float.parseFloat(resta[1]);
+             aux=Float.parseFloat(resta[1]);
 
-             cont=cont/divi;
+             cont= getCont() / getAux();
 
-         }catch(NumberFormatException e){}
+         }catch(Exception e){}
 
 
 
-         return cont;
+         return getCont();
      }
 
-    static int producto(String cadena){
+    static float producto(String cadena){
 
-        int aux, cont=0;
+
 
         String []producto=cadena.split("\\*");
 
         try {
-            for (int i=0;i<producto.length;i++){
-                aux = Integer.parseInt(producto[i]);
-                cont = cont * aux;
-            }
-
-        }catch(NumberFormatException e){}
+            cont=Float.parseFloat(producto[0]);
+            aux=Float.parseFloat(producto[1]);
+        }catch(Exception e){}
 
 
 
-        return cont;
+        return getCont();
     }
 
     static String resultado(String oper, int ele){
-        float divi=0;
-        int num=0;
+        float divi=0, num=0;
         String resul="";
 
         switch (ele){
@@ -109,5 +108,13 @@ public class Operaciones {
         resul=String.valueOf(num);
 
         return resul;
+    }
+
+    public static float getAux() {
+        return aux;
+    }
+
+    public static float getCont() {
+        return cont;
     }
 }

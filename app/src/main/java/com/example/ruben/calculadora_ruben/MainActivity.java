@@ -1,9 +1,11 @@
 package com.example.ruben.calculadora_ruben;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,12 +13,14 @@ public class MainActivity extends AppCompatActivity {
     Button btn_ce, btn_men;
     TextView pantalla;
     static int ele;
+    Context cnt;
     static String oper="", aux="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //
 
         btn_0=(Button)findViewById(R.id.btn_cero);
         btn_1=(Button)findViewById(R.id.btn_uno);
@@ -121,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 oper+="+";
+                bloqueo();
                 pantalla.setText(oper);
                 ele=1;
             }
@@ -130,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 oper+="-";
+                bloqueo();
                 pantalla.setText(oper);
                 ele=2;
             }
@@ -138,7 +144,8 @@ public class MainActivity extends AppCompatActivity {
         btn_producto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                oper+="x";
+                oper+="*";
+                bloqueo();
                 pantalla.setText(oper);
                 ele=3;
             }
@@ -148,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 oper+="/";
+                bloqueo();
                 pantalla.setText(oper);
                 ele=4;
             }
@@ -159,6 +167,11 @@ public class MainActivity extends AppCompatActivity {
 
                 aux=Operaciones.resultado(pantalla.getText().toString(), ele);
                 pantalla.setText(aux);
+                activar();
+                oper="";
+                aux="";
+
+
             }
         });
 
@@ -173,9 +186,32 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
 //--------------------------------------------------------------------------------------------------
 
 
+    }
+
+    void bloqueo(){
+            btn_division.setEnabled(false);
+            btn_suma.setEnabled(false);
+            btn_resta.setEnabled(false);
+            btn_producto.setEnabled(false);
+    }
+
+    void activar(){
+
+        if(String.valueOf(Operaciones.getAux())=="" || String.valueOf(Operaciones.getCont())==""){
+           // pantalla.setText("Hay campos vacios en la operacion");
+            Toast mensaje= Toast.makeText(cnt, "Hay campos que no estan rellenados",Toast.LENGTH_LONG);
+            mensaje.show();
+        }else{
+            btn_division.setEnabled(true);
+            btn_suma.setEnabled(true);
+            btn_resta.setEnabled(true);
+            btn_producto.setEnabled(true);
+
+        }
     }
 
 
